@@ -226,11 +226,10 @@ All metrics reported on the held-out test set (20% of data, 5,187 rows). The tra
 
 | Model | RMSE | MAE | R² |
 |-------|------|-----|-----|
-| Linear Regression | — | — | — |
-| Random Forest (default) | — | — | — |
-| Gradient Boosting (default) | — | — | — |
+| Linear Regression | 42,673.17 | 29,918.68 | 0.7488 |
+| Random Forest (default) | 10,999.69 | 4,182.81 | 0.9833 |
+| Gradient Boosting (default) | 31,452.16 | 20,165.78 | 0.8635 |
 
-> Fill in your comparison table values from the training output before submitting.
 
 ### Final Model Performance
 
@@ -261,10 +260,7 @@ The year 2003 is completely absent from the source data. No records exist for an
 **3. Prediction reliability by yield range**
 Because the target variable is heavily right-skewed, the model has been trained on far more examples of low-to-moderate yields than extreme high yields. Predictions are therefore more reliable and confident in the lower yield range.
 
-**4. yield per hectare vs total production**
-`hg/ha_yield` measures land use efficiency — not total food output. Countries with high average yield per hectare are not necessarily the world's largest food producers. Large agricultural nations growing diverse crop portfolios including low-yield grains may show lower average yield than smaller nations whose records are dominated by high-productivity crops.
-
-**5. Notebook scope**
+**4. Notebook scope**
 The exploration notebook (`notebooks/exploration.ipynb`) covers the complete analytical narrative — EDA, data quality investigation, cleaning decisions and feature engineering — in a single document to preserve the logical flow from observation to decision to action. All cleaning and feature engineering logic is additionally implemented as standalone executable scripts in `src/` for reproducibility.
 
 ---
