@@ -1,7 +1,7 @@
 # Crop Yield Prediction
 ### CipherSense AI — Machine Learning Engineer Intern Technical Assessment
 
-A reproducible machine learning pipeline that predicts crop yield (hg/ha) from environmental and agricultural features using the FAO Crop Yield dataset from Kaggle.
+A reproducible machine learning pipeline that predicts crop yield (hg/ha) from environmental and agricultural features using the Crop Yield dataset from Kaggle.
 
 ---
 
@@ -19,7 +19,7 @@ A reproducible machine learning pipeline that predicts crop yield (hg/ha) from e
 
 ## Problem Description
 
-Crop yield prediction is a critical challenge in agricultural planning — enabling governments, farmers and organisations to anticipate food production, allocate resources efficiently and respond to climate variability. This project builds a supervised machine learning pipeline that predicts crop yield in hectograms per hectare (hg/ha) from a combination of environmental conditions (rainfall, temperature), agricultural inputs (pesticides) and contextual factors (country, crop type, year).
+Crop yield prediction is a critical challenge in agricultural planning — enabling governments, farmers and organisations to anticipate food production, allocate resources efficiently and respond to climate variability. This project builds a supervised machine learning pipeline that predicts crop yield in hectograms per hectare (hg/ha) of 10 must consumed crops in the world from a combination of environmental conditions (rainfall, temperature), agricultural inputs (pesticides) and contextual factors (country, crop type, year).
 
 The goal is not merely to achieve high accuracy but to demonstrate a clean, reproducible and well-documented ML engineering workflow — from raw data through cleaning, feature engineering, preprocessing and model evaluation.
 
@@ -27,7 +27,7 @@ The goal is not merely to achieve high accuracy but to demonstrate a clean, repr
 
 ## Dataset Description
 
-**Source:** [FAO Crop Yield Prediction Dataset — Kaggle](https://www.kaggle.com/datasets/patelris/crop-yield-prediction-dataset)
+**Source:** [Crop Yield Prediction Dataset — Kaggle](https://www.kaggle.com/datasets/patelris/crop-yield-prediction-dataset)
 
 **Raw shape:** 28,242 rows × 8 columns (including a redundant index column)
 
@@ -35,7 +35,7 @@ The goal is not merely to achieve high accuracy but to demonstrate a clean, repr
 |--------|------|-------------|
 | `Area` | Categorical | Country where the crop was grown (101 unique countries) |
 | `Item` | Categorical | Crop type (10 unique crops after cleaning) |
-| `Year` | Numerical | Year of observation (1990–2013) |
+| `Year` | Numerical | Year of observation (1990–2013)|
 | `hg/ha_yield` | Numerical | **Target variable** — crop yield in hectograms per hectare |
 | `average_rain_fall_mm_per_year` | Numerical | Average annual rainfall in mm |
 | `pesticides_tonnes` | Numerical | Pesticide usage in tonnes |
@@ -55,7 +55,7 @@ The goal is not merely to achieve high accuracy but to demonstrate a clean, repr
 ```
 ml-crop-yield-project/
 ├── data/
-│   ├── raw/                        ← original Kaggle dataset (not uploaded)
+│   ├── raw/                        ← original Kaggle dataset
 │   └── processed/
 │       └── cleaned_yield.csv       ← cleaned and feature-engineered dataset
 ├── notebooks/
@@ -71,7 +71,7 @@ ml-crop-yield-project/
 └── README.md
 ```
 
-> **Note on trained_model.pkl:** The trained model file exceeds GitHub's file size limit for standard uploads and could not be included directly in the repository. The full training pipeline in `src/train_model.py` reproduces the model exactly — `random_state=42` is set throughout to ensure reproducibility. Run `python src/train_model.py` to regenerate the model.
+> **Note on trained_model.pkl:** The trained model file exceeds GitHub's file size limit for standard uploads and could not be included directly in the repository. it can be found at this [google drive link] Also the full training pipeline in `src/train_model.py` reproduces the model exactly — `random_state=42` is set throughout to ensure reproducibility. Run `python src/train_model.py` to regenerate the model.
 
 ---
 
@@ -166,15 +166,7 @@ The tuned model from `RandomizedSearchCV` was selected as the final model. Altho
 pip install -r requirements.txt
 ```
 
-### Step 1 — Place raw data
-
-Download the dataset from [Kaggle](https://www.kaggle.com/datasets/patelris/crop-yield-prediction-dataset) and place it at:
-
-```
-data/raw/yield_df.csv
-```
-
-### Step 2 — Run data cleaning
+### Step 1 — Run data cleaning
 
 ```bash
 python src/data_cleaning.py \
@@ -184,7 +176,7 @@ python src/data_cleaning.py \
 
 This produces `data/processed/cleaned_yield.csv` — the cleaned and feature-engineered dataset ready for training.
 
-### Step 3 — Train the model
+### Step 2 — Train the model
 
 ```bash
 python src/train_model.py \
@@ -194,7 +186,7 @@ python src/train_model.py \
 
 This trains three models, compares their performance, tunes the best model using `RandomizedSearchCV` and saves the final pipeline to `models/trained_model.pkl`.
 
-### Step 4 — Evaluate the model
+### Step 3 — Evaluate the model
 
 ```bash
 python src/evaluate_model.py \
