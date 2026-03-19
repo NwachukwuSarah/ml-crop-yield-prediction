@@ -3,6 +3,9 @@
 
 A reproducible machine learning pipeline that predicts crop yield (hg/ha) from environmental and agricultural features using the Crop Yield dataset from Kaggle.
 
+
+Note:
+[Link to Model file on google drive](https://drive.google.com/file/d/13mkfw04rB2gucKwupAAh73hiPRaU28Hq/view?usp=drive_link)
 ---
 
 ## Table of Contents
@@ -71,7 +74,7 @@ ml-crop-yield-project/
 └── README.md
 ```
 
-> **Note on trained_model.pkl:** The trained model file exceeds GitHub's file size limit for standard uploads and could not be included directly in the repository. it can be found at this [google drive link] Also the full training pipeline in `src/train_model.py` reproduces the model exactly — `random_state=42` is set throughout to ensure reproducibility. Run `python src/train_model.py` to regenerate the model.
+> **Note on trained_model.pkl:** The trained model file exceeds GitHub's file size limit for standard uploads and could not be included directly in the repository. it can be found at this [google drive link](https://drive.google.com/file/d/13mkfw04rB2gucKwupAAh73hiPRaU28Hq/view?usp=drive_link) Also the full training pipeline in `src/train_model.py` reproduces the model exactly — `random_state=42` is set throughout to ensure reproducibility. Run `python src/train_model.py` to regenerate the model.
 
 ---
 
