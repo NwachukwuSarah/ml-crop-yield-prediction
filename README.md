@@ -252,6 +252,39 @@ The gap between RMSE (15,807) and MAE (8,313) indicates the presence of high-err
 
 ---
 
+### Evaluation Plots
+
+**Actual vs Predicted**
+
+![Actual vs Predicted](outputs/actual_vs_predicted.png)
+
+The scatter plot shows the vast majority of predictions sitting tightly along the perfect prediction diagonal line — confirming the model's strong overall performance (R² = 0.9655). Predictions are most reliable in the low to moderate yield range where dots cluster closest to the line. In the upper yield range above 300,000 hg/ha the scatter widens and some dots fall noticeably below the diagonal — indicating the model tends to underestimate extreme high yields. This is consistent with the right skewed target distribution identified during EDA where the model has seen far fewer training examples of extreme yields.
+
+---
+
+**Residual Analysis**
+
+![Residual Analysis](outputs/residuals_plot.png)
+
+The left plot shows a clear funnel shape — residuals are tightly clustered around zero for low predicted yields but spread increasingly wider as predicted yield increases. This heteroscedasticity confirms that prediction errors are larger and less consistent in the upper yield range. The model is most confident and accurate for low to moderate yields and least reliable for extreme high values.
+
+The right plot shows the residuals distribution is sharply concentrated around zero with a mean residual of 738 hg/ha — negligible relative to the overall yield scale of up to 500,000 hg/ha. This confirms the model has no meaningful systematic bias in either direction. The right skewed tail reflects the occasional large underprediction errors in the high yield range visible in the left plot.
+
+---
+
+**Feature Importance**
+
+![Feature Importance](outputs/feature_importance.png)
+
+`Item_Potatoes` is by far the single most important feature with an importance score of 0.2700 — more than three times the next ranked feature. This confirms the EDA finding that crop type is the dominant predictor of yield, with potatoes being a particularly distinct high-productivity crop. Crop type features collectively dominate the top of the chart with Cassava, Soybeans, Wheat, Sorghum and Maize all appearing in the top 10.
+
+All four engineered features appear in the top 20 — validating the feature engineering work:
+- `pesticides_per_rainfall` (0.0421) and `rain_temp_interaction` (0.0415) both outperform the raw `pesticides_tonnes` (0.0411) and `average_rain_fall_mm_per_year` (0.0349) features they were derived from — direct evidence that the engineered features added predictive signal beyond what the original features alone provided
+- `avg_temp_squared` (0.0335) captures the non-linear temperature relationship
+- `years_since_1990` (0.0201) captures the temporal agricultural progress trend
+
+Country features appear lower in the ranking — with only United Kingdom, India and Australia making the top 20 — suggesting that once crop type is accounted for, country adds relatively less additional signal. This is consistent with the observation that yield per hectare is driven more by what is being grown than where it is being grown.
+
 ## Known Limitations
 
 **1. Categorical representation imbalance**
