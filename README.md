@@ -266,7 +266,7 @@ The scatter plot shows the vast majority of predictions sitting tightly along th
 
 ![Residual Analysis](outputs/residuals_plot.png)
 
-The left plot shows a clear funnel shape — residuals are tightly clustered around zero for low predicted yields but spread increasingly wider as predicted yield increases. This heteroscedasticity confirms that prediction errors are larger and less consistent in the upper yield range. The model is most confident and accurate for low to moderate yields and least reliable for extreme high values.
+The left plot shows a clear funnel shape — residuals are tightly clustered around zero for low predicted yields but spread increasingly wider as predicted yield increases. This unequal spread confirms that prediction errors are larger and less consistent in the upper yield range. The model is most confident and accurate for low to moderate yields and least reliable for extreme high values.
 
 The right plot shows the residuals distribution is sharply concentrated around zero with a mean residual of 738 hg/ha — negligible relative to the overall yield scale of up to 500,000 hg/ha. This confirms the model has no meaningful systematic bias in either direction. The right skewed tail reflects the occasional large underprediction errors in the high yield range visible in the left plot.
 
